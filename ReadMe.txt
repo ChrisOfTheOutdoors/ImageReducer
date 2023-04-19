@@ -38,8 +38,9 @@ capable of running .exe's)
 tkinter
 PIL
 Build
-To build a standalone executable using PyInstaller:
 
+
+To build a standalone executable using PyInstaller:
 css
 Copy code
 pyinstaller --onefile imageReducer.py
