@@ -1,34 +1,62 @@
 Image Reducer
-This is a Python script that allows you to compress and resize one or more image files, reducing their file size without reducing the quality of the images very much. The compressed images are saved in WebP format, which can reduce the file size even further than other image formats like JPEG or PNG.
+Image Reducer is a Python program that allows you to reduce the file size of 
+multiple images at once without significantly reducing their quality. The 
+program works by resizing the images to have a maximum width of 1920 pixels 
+and keeping the aspect ratio, then converting them to the WebP format and 
+compressing them.
+
+The program also includes the following features:
+
+The ability to select only image files with the extensions ".jpg", ".jpeg",
+".png", and ".bmp" for processing. Any other file types selected in the file
+dialog will be ignored. A visible progress bar with the word "Processing" 
+that is displayed while the program is running and switches to "Complete" 
+when the program completes. The progress bar shows the percentage of images 
+processed and updates in real-time as each image is compressed. Once all images
+have been processed, the progress bar switches to an indeterminate mode to indicate 
+that processing is complete. The status label is also updated to display "Complete". 
+Finally, the program waits for 1.4 seconds before automatically closing the window.
 
 Usage
-Run the imageReducer.py file using Python 3.10 or later.
-A file explorer window will open, allowing you to select one or more image files to compress. You can select multiple files by holding down the Ctrl or Shift key while clicking on the files.
-Click the "Open" button to select the image files.
-The program will compress each image file by resizing it to have a maximum width of 1920 pixels, keeping the aspect ratio, and then save it in WebP format with a suffix "_compressed.webp" added to the original filename.
-The compressed images will be saved in a new folder named "Compressed Images-DD-MM-YYYY HH-MM" in the same directory as the selected image files.
+To use Image Reducer:
+
+Double-click on the imageReducer.exe file to launch the program.
+Click the "Open" button to select one or more image files to process. Only image 
+files with the extensions ".jpg", ".jpeg", ".png", and ".bmp" will be processed.
+Once image processing begins, a progress bar with the word "Processing" will appear 
+on the UI. As each image is compressed, the progress bar will update to show the 
+percentage of images processed. When all images have been processed, the progress 
+bar will switch to an indeterminate mode to indicate that processing is complete, 
+and the status label will change to display "Complete". The program will then wait 
+for 1.4 seconds before automatically closing the window.
+
 Requirements
-Python 3.10 or later
-tkinter module (included with Python)
-Pillow module (can be installed using pip install pillow)
+Image Reducer requires Python 3.10 and the following packages to run from the terminal:
+(Note: Running the program from the .exe only requires that you have an operating system
+capable of running .exe's)
+
+tkinter
+PIL
+Build
+To build a standalone executable using PyInstaller:
+
+css
+Copy code
+pyinstaller --onefile imageReducer.py
+The standalone executable will be created in the dist folder.
+
 Notes
-The program will automatically resize images with a width greater than 1920 pixels while keeping the aspect ratio. Images with a width less than or equal to 1920 pixels will not be resized.
-The program will use a default compression quality of 80 for the compressed images, but you can change this value by modifying the quality variable in the code.
-The program uses the Image.LANCZOS filter to resize the image. This filter is recommended by Pillow for downsampling images and produces high-quality results with good performance.
-The program will create a new folder for each run with the current date and time as the folder name. The compressed images will be saved in this folder.
-The program will overwrite existing files with the same name in the same directory without warning.
-The program will print a message indicating that the file was compressed successfully and the path to the compressed image file for each file compressed.
-
-Limitations
-The program only supports compressing image files. Other file types will not be processed.
-The program does not provide a progress bar or other indication of the compression progress. For large image files or a large number of image files, the compression process may take some time.
-The program does not provide an option to select the output image format. The images will always be saved in WebP format with a ".webp" file extension.
-Troubleshooting
-If you encounter any errors while running the program, make sure that you have installed Python 3.10 or later and the required modules (tkinter and Pillow). You can install the Pillow module using the pip install pillow command in your terminal or command prompt.
-If the program is unable to find or open the image files you selected, make sure that the files exist and that you have permission to access them. The program may also have difficulty opening certain image file formats or corrupted files.
-
-License
-This program is released under the MIT License. You can find the full license text in the LICENSE file in the root directory of the program.
-
-Acknowledgements
-This program was created by Chris Edmonds using Python and the Pillow library. The program was inspired by similar image compression tools and scripts available online. Thanks to the developers of Python, tkinter, and Pillow for their work on these tools and libraries.
+If you are running the standalone executable, make sure that you have downloaded the 
+correct version for your operating system (32-bit or 64-bit). If the program is not 
+working as expected, try running it from the command line using Python to see if any 
+error messages are printed to the console. This can help you identify and fix any 
+issues with the program. If you are having trouble creating a standalone executable 
+with PyInstaller, try using a different packaging tool like cx_Freeze or PyOxidizer, 
+or consult the PyInstaller documentation or community forums for help. If you want to 
+modify the program's behavior, you can edit the imageReducer.py file using a text 
+editor or Python IDE. Some possible modifications include changing the maximum image 
+width, adjusting the image compression quality, or adding support for additional file 
+types. If you want to distribute the program to others, you can share the standalone 
+executable file with them, along with any additional instructions or documentation. 
+Make sure to include any necessary license or attribution information for the packages 
+used by the program.
